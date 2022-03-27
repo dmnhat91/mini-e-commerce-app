@@ -62,4 +62,13 @@ Currently Auth Service is listening at **port 3000**
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
+### Host File Tweak
+
+You need to trick Ingress to think the domain configured in `ingress-srv.yaml` is localhost.
+For MacOS/Linux:
+
+- Add `127.0.0.1 posts.com` to `/etc/hosts`
+  For Windows:
+- Add `127.0.0.1 posts.com` to `C:\Windows\System32\Drivers\etc\hosts`
+
 ![xxxx](images/xxxx.png)
