@@ -5,10 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  local:
-    push: false # when we build an image, don't push it to DockerHub
+  # local:
+  #   push: false # when we build an image, don't push it to DockerHub
+  googleCloudBuild:
+    projectId: ticketing-dev-345514
   artifacts:
-    - image: dmnhat91/auth
+    - image: us.gcr.io/ticketing-dev-345514/auth
       context: auth # the folder which contains all the codes for this image
       docker:
         dockerfile: Dockerfile
