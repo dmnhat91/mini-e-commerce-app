@@ -59,6 +59,7 @@ Currently Auth Service is listening at **port 3000**
       ![Pic 1](images/packagejsondemo.png)
       ![Pic 2](images/packagejsondemo2.png)
    5. Then `run npm install` (this will runs the command _ts-node-dev src/index.ts_ when npm starts)
+   6. Install express validator to assist us to validate user data: `npm install express-validator`
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
@@ -167,3 +168,15 @@ Change the IP address in host file:
 #### Step 6: Restart skaffold
 
 Just make sure the context is for GCloud. Then go to the directory and run `skaffold dev`
+
+## Debug
+
+### Error 1:
+
+```
+build [us.gcr.io/ticketing-dev-345514/auth] failed: getting cloudbuild client: google: could not find default credentials. See https://developers.google.com/accounts/docs/application-default-credentials for more information.
+```
+
+Resolved url: https://stackoverflow.com/questions/41507904/could-not-find-default-credentials
+
+Summary: Run this command `gcloud auth application-default login`
