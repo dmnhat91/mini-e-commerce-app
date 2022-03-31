@@ -186,3 +186,19 @@ build [us.gcr.io/ticketing-dev-345514/auth] failed: getting cloudbuild client: g
 Resolved url: https://stackoverflow.com/questions/41507904/could-not-find-default-credentials
 
 Summary: Run this command `gcloud auth application-default login`
+
+### Error 2:
+
+If skaffold unable to watch for changes, then add:
+
+```
+Try adding "--poll" to your start script
+
+scripts: {
+
+    "start": ts-node-dev --poll src/index.ts"
+
+}
+```
+
+![Resolve reload issue](images/reload-issue-solve.png)
