@@ -55,6 +55,12 @@ Currently Auth Service is listening at **port 3000**
 
 Express error handling: https://expressjs.com/en/guide/error-handling.html
 
+#### Common response structure
+
+Errors are an aray of objects. And each has a message and maybe a field.
+
+![Common response structure](images/common-response.png)
+
 ## Project setup
 
 1. In **ticketing/auth/**:
