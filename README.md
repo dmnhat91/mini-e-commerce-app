@@ -49,6 +49,12 @@ Currently Auth Service is listening at **port 3000**
 3. Redis
 4. NATS streaming server
 
+### Error handlings
+
+![Error handling methods](images/error-handlings.png)
+
+Express error handling: https://expressjs.com/en/guide/error-handling.html
+
 ## Project setup
 
 1. In **ticketing/auth/**:
