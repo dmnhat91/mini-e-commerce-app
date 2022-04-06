@@ -72,6 +72,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
       ![Pic 2](images/packagejsondemo2.png)
    5. Then `run npm install` (this will runs the command _ts-node-dev src/index.ts_ when npm starts)
    6. Install express validator to assist us to validate user data: `npm install express-validator`
+   7. Install async error handling package library `npm install express-async-errors`
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
