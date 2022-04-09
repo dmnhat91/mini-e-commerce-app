@@ -28,6 +28,9 @@ We build **common** library that helps share a bund of codes among services.
 We need storage to store User, Ticket, Order, Charge.
 ![Objects for storage](images/Objects4Storage.png)
 
+![MongoDB storage](images/MongoDBStorage.jpeg)
+![MongoDB storage for auth](images/MongoDBStorage2.jpeg)
+
 ### Services
 
 ![Services](images/Services.png)
@@ -73,6 +76,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
    5. Then `run npm install` (this will runs the command _ts-node-dev src/index.ts_ when npm starts)
    6. Install express validator to assist us to validate user data: `npm install express-validator`
    7. Install async error handling package library `npm install express-async-errors`
+   8. Install mongoose for MongoDB `npm install mongoose`
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
