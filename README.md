@@ -31,6 +31,11 @@ We need storage to store User, Ticket, Order, Charge.
 ![MongoDB storage](images/MongoDBStorage.jpeg)
 ![MongoDB storage for auth](images/MongoDBStorage2.jpeg)
 ![MongoDB storage for auth2](images/MongoDBStorage3.jpeg)
+![MongoDB storage for auth3](images/MongoDBStorage4.jpeg)
+
+### Password hash
+
+![Password Hash](images/PasswordHash.jpeg)
 
 ### Services
 
