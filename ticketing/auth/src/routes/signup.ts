@@ -1,7 +1,7 @@
 import express, {Request, Response} from 'express';
 import {body, validationResult} from 'express-validator';
+import { User } from '../models/user';
 import {RequestValidationError} from '../errors/request-validation-error';
-import {DatabaseConnectionError} from '../errors/database-connection-error';
 
 const router = express.Router();
 
@@ -16,7 +16,7 @@ router.post('/api/users/signup', [
         .withMessage("Password must be between 4 and 20 characters")
 
 ], 
-(req: Request, res: Response) => {
+async (req: Request, res: Response) => {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -25,11 +25,17 @@ router.post('/api/users/signup', [
 
     const {email, password} = req.body;
 
-    console.log('Creating a user...');
-    throw new DatabaseConnectionError();
+    const existingUser = await User.findOne({email});
 
-    res.send({});
-    
+    if (existingUser){
+        console.log('Email in use');
+        return res.send({});
+    }
+
+    const user = User.build({email, password});
+    await user.save();
+
+    res.status(201).send(user);
 });
 
 export { router as signupRouter}; //rename because we have many routers (they can't be the same name)
