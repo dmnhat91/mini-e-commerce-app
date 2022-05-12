@@ -51,6 +51,53 @@ We need storage to store User, Ticket, Order, Charge.
 
 Currently Auth Service is listening at **port 3000**
 
+#### Authentication Approach
+
+Idea: <br/>
+![Approach](images/approach.jpeg)
+A request to buy ticket needs to contain some form of authentication for the Orders service to verify. <br/>
+
+2 ways to implement this is:
+
+1. Fundamental Option 1: Individual services rely on the auth service
+   ![Auth Approach 1](images/auth-approach-1.jpeg)
+
+However using this way, if Auth service is crashed. Whole app is crashed.
+
+2. Fundamental Option 1.1: Individual services rely on auth service as a gateway
+   ![Auth Approach 1.1](images/auth-approach-11.jpeg)
+
+We still 100% rely on Auth service. We have the same cons as the Option 1.
+
+3.  Fundamental Option 2: Individual services know how to authenticate a user
+    ![Auth Approach 2](images/auth-approach-2.jpeg)
+
+We choose approach **Option 2** because we can eliminate the dependency of Auth service. However, this can create code duplication. But we can mitigate it by using a common library.
+
+Some other downsides of this approach. Let's look at the following flow:
+![Signin flow](images/first-signin-flow.jpeg)
+If we follow this approach, the User will provide us the token and can do whatever he/she wants.
+
+Scenario where UserABC is a bad person and we want to ban:
+![Ban Case](images/ban-case.jpeg)
+But the user still has valid token?
+![Prob with ban case](images/problem-with-ban.jpeg)
+We cannot ask the Auth service as it now will create the dependency.
+To summarise the problem:
+![Prob summary](images/prob-summary.jpeg)
+
+We will go with Option #2. And there is a solution to solve this but it takes a lot of work so out of the scope of project:
+![Auth solution step 1](images/auth-solution-1.jpeg)
+
+![Auth solution step 2](images/auth-sol-step-2.jpeg)
+OR
+![Auth solution step 2.2](images/auth-sol-step-22.jpeg)
+We can reject straight away if the token expire without communicating with Auth service. And tell the client to do it himself/herself.
+
+However, with both approaches, there is a window of time where user gets banned but still can make request. Here is another solution to solve this thing:
+![Auth solution another way](images/auth-sol-another-way.jpeg)
+User ban event will be consumed by other services and shortlive there.
+
 ### Technologies used
 
 1. Next.js: server side rendering React framework.
