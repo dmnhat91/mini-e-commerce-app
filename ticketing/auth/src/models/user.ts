@@ -34,10 +34,10 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function(done){
-    //check if we've modified other the user properties (in case in future we retrieve user then save it back - aka. if we want to change email, we don't want to rehash the password)
-    //(if statement is true IF something is modified EXCEPT password)
+    //check if we are modifying the password (in case in future we retrieve user then save it back - aka. if we want to change email, we don't want to rehash the password)
+    //(password is rehashed only when the password is changed, NOT other fields)
     if (this.isModified('password')){ 
-        const hashed = await Password.toHash(this.get('password'));
+        const hashed = await Password.toHash(this.get('password')); //this.get('password') return the password user just sets on the document
         this.set('password', hashed);
     }
 
