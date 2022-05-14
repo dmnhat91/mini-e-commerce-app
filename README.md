@@ -126,6 +126,10 @@ And because we need to send authentication info within only one request. Cookie 
 ![Server Side React 2](images/server-side-react-2.jpeg)
 ![JWT solution via Cookie](images/jwt-solution.jpeg)
 
+To summarise the Auth flow:
+![Auth Flow summary](images/auth-flow-summary.jpeg)
+![Auth Flow summary 2](images/auth-flow-summary2.jpeg)
+
 ### Technologies used
 
 1. Next.js: server side rendering React framework.
@@ -158,6 +162,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
    6. Install express validator to assist us to validate user data: `npm install express-validator`
    7. Install async error handling package library `npm install express-async-errors`
    8. Install mongoose for MongoDB `npm install mongoose`
+   9. Install cookie-session for Authentication `npm install cookie-session @types/cookie-session`
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
