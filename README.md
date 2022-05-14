@@ -96,7 +96,35 @@ We can reject straight away if the token expire without communicating with Auth 
 
 However, with both approaches, there is a window of time where user gets banned but still can make request. Here is another solution to solve this thing:
 ![Auth solution another way](images/auth-sol-another-way.jpeg)
-User ban event will be consumed by other services and shortlive there.
+User ban event will be consumed by other services and shortlive there. You can temporarily store this for the amount of time equal to the lifetime of the token.
+
+**Authentication requirements**
+
+1. The Auth service is not just to check a user whether he/she is authenticated or not. It also needs to provide more details of the user to see whether they are allowed to purchase tickets.
+   ![Auth Req 1](images/auth-req-1.jpeg)
+2. Quite similar to requirement 1, this is for Admin to create free coupons.
+   ![Auth Req 2](images/auth-req-2.jpeg)
+3. Need to implement token expiration mechanism. This must be secure so that the user cannot tamper the expiry time of the token. This implies the importance of using the JWT (because cookie is easily tampered - we are asking the browser to expire the cookie. However, the user can easily copy the information in cookie and continue to use)
+   ![Auth Req 3](images/auth-req-3.jpeg)
+4. One of goals of microservices is to allow different services written in different languages. Hence Auth service need to support this thing. And we don't want each service to implement extra storage/database to store the auth information.
+   ![Auth Req 4](images/auth-req-4.jpeg)
+
+To summary:
+![Auth Req Summary](images/auth-req-summary.jpeg)
+
+**Issues with JWT**
+Let's look at how a normal flow looks like:
+![Normal React Flow](images/normal-react-flow.jpeg)
+
+Considering 3 requests, which point in time can we communicate the authentication information from browser to backend?
+![Normal React Flow 2](images/normal-react-flow-2.jpeg)
+
+However, we are building a SERVER-SIDER RENDERED React App. The idea is that we make some initial request (GET ticketing.dev) to backend server. The backend server then render/build the HTML and send the HTML file with all contents inside of it (aka. all the relevant orders, tickets, etc.). The browser just display the full content without having to send later quests. The reason we are using server-side is for SEO (search engine optimization) and in case users have other devices like mobile devices.
+![Server Side React](images/server-side-react.jpeg)
+
+And because we need to send authentication info within only one request. Cookie supports this.
+![Server Side React 2](images/server-side-react-2.jpeg)
+![JWT solution via Cookie](images/jwt-solution.jpeg)
 
 ### Technologies used
 
