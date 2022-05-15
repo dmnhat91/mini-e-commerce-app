@@ -163,6 +163,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
    7. Install async error handling package library `npm install express-async-errors`
    8. Install mongoose for MongoDB `npm install mongoose`
    9. Install cookie-session for Authentication `npm install cookie-session @types/cookie-session`
+   10. Install jsonwebtoken for JWT `npm install jsonwebtoken @types/jsonwebtoken`
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
