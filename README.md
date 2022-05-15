@@ -127,8 +127,12 @@ And because we need to send authentication info within only one request. Cookie 
 ![JWT solution via Cookie](images/jwt-solution.jpeg)
 
 To summarise the Auth flow:
+
+**When signup**
 ![Auth Flow summary](images/auth-flow-summary.jpeg)
 ![Auth Flow summary 2](images/auth-flow-summary2.jpeg)
+**When signin**
+![Sign in](images/signin-flow.jpeg)
 
 ### Technologies used
 
