@@ -133,6 +133,8 @@ To summarise the Auth flow:
 ![Auth Flow summary 2](images/auth-flow-summary2.jpeg)
 **When signin**
 ![Sign in](images/signin-flow.jpeg)
+**Current user check**
+![JWT verification](images/jwt-verify.jpeg)
 
 ### Technologies used
 
