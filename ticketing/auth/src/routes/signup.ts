@@ -37,10 +37,10 @@ async (req: Request, res: Response) => {
     await user.save();
 
     // Generate JWT
-    const userJwt = jwt.sign({
+    const userJwt = jwt.sign({ // Syntax: jwt.sign(payload, secretOrPrivateKey, [options, callback])
         id: user.id,
         email: user.email
-    }, 'asdf'); // Syntax: jwt.sign(payload, secretOrPrivateKey, [options, callback])
+    }, process.env.JWT_KEY!); //process.env.JWT_KEY!: the exclamation to tell TypeScript not to worry about the check. We already check whether the env var is defined in index.ts (when the app starts already).
 
     // Store it on session object
     req.session = {

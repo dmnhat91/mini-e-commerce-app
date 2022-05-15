@@ -15,6 +15,12 @@ spec:
       containers:
         - name: auth
           image: us.gcr.io/ticketing-dev-345514/auth
+          env:
+            - name: JWT_KEY #create an env variable inside the container with the name JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret #name of the secret key
+                  key: JWT_KEY #key of the secret key
 ---
 apiVersion: v1
 kind: Service

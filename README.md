@@ -273,6 +273,21 @@ Change the IP address in host file:
 
 Just make sure the context is for GCloud. Then go to the directory and run `skaffold dev`
 
+### JWT Creation
+
+**Storing JWT secret on Kubernetes**
+![JWT Secret Storage](images/store-secret-in-k8s.jpeg)
+
+Command line: `kubectl create secret generic jwt-secret --from-literal=JWT_KEY=asdf`
+
+To explain:
+
+- `generic`: create a generic secret
+- `jwt-secret`: the name of the secret (mostly used for logging purposes, also can be used to refer to a pod inside config file)
+- `--from-literal`: where we defines key value pairs for the secret. Currently we only assign 1 key value pair: `jwt=asdf`
+
+To get list of secrets: `kubectl get secrets`
+
 ## Debug
 
 ### Error 1:
@@ -300,3 +315,8 @@ scripts: {
 ```
 
 ![Resolve reload issue](images/reload-issue-solve.png)
+
+## Other resources
+
+1. [Cookie content decoder](https://www.base64decode.org)
+2. [JWT decoder](https://jwt.io)
