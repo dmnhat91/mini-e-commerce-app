@@ -135,6 +135,8 @@ To summarise the Auth flow:
 ![Sign in](images/signin-flow.jpeg)
 **Current user check**
 ![JWT verification](images/jwt-verify.jpeg)
+**Current user middleware implementation**
+![Current user middleware](images/current-user-middleware.jpeg)
 
 ### Technologies used
 
