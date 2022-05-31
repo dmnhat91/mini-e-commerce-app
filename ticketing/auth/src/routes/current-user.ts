@@ -1,12 +1,10 @@
 import express from 'express';
-import jwt from 'jsonwebtoken';
 
 import {currentUser} from '../middlewares/current-user';
-import {requireAuth} from '../middlewares/require-auth';
 
 const router = express.Router();
 
-router.get('/api/users/currentuser', currentUser, requireAuth, (req, res) => {
+router.get('/api/users/currentuser', currentUser, (req, res) => {
     // if (!req.session?.jwt) { // if (!req.session || !req.session.jwt){ //if cookie session is not set OR the jwt field of the session when the session is set is null
     //     return res.send({currentUser: null});
     // }
