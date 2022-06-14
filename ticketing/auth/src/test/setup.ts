@@ -7,6 +7,8 @@ import {app} from '../app';
 let mongo: any;
 //running beforeALl codes before running the tests
 beforeAll(async () => {
+    process.env.JWT_KEY = 'whateverstring';
+
     mongo = new MongoMemoryServer();
     await mongo.start();
     const mongoUri = await mongo.getUri();
