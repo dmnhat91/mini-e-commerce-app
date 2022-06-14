@@ -173,6 +173,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
    9. Install cookie-session for Authentication `npm install cookie-session @types/cookie-session`
    10. Install jsonwebtoken for JWT `npm install jsonwebtoken @types/jsonwebtoken`
    11. Install Jest library for writing tests `npm install --save-dev @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server`. We use `--save-dev` to indicate this is development denpendencies (only use for testing at local) and we don't want to download and build into Docker images as it is quite heavy.
+   12. Run `npm run test` for running tests. Use `Control + C` to stop the tests running. Whenever you update the file and believe the tests are passed but Jest stills show failed test, try restarting the tests.
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
