@@ -172,6 +172,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
    8. Install mongoose for MongoDB `npm install mongoose`
    9. Install cookie-session for Authentication `npm install cookie-session @types/cookie-session`
    10. Install jsonwebtoken for JWT `npm install jsonwebtoken @types/jsonwebtoken`
+   11. Install Jest library for writing tests `npm install --save-dev @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server`. We use `--save-dev` to indicate this is development denpendencies (only use for testing at local) and we don't want to download and build into Docker images as it is quite heavy.
 2. In **ticketing**:
    1. Run `skaffold dev` to start skaffold
 
@@ -295,6 +296,9 @@ To explain:
 - `--from-literal`: where we defines key value pairs for the secret. Currently we only assign 1 key value pair: `jwt=asdf`
 
 To get list of secrets: `kubectl get secrets`
+
+### For running tests
+The `supertest` library helps to target a service to available port of our local machine for testing.
 
 ## Debug
 
