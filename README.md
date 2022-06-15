@@ -175,7 +175,12 @@ Errors are an aray of objects. And each has a message and maybe a field.
    11. Install Jest library for writing tests `npm install --save-dev @types/jest @types/supertest jest ts-jest supertest mongodb-memory-server`. We use `--save-dev` to indicate this is development denpendencies (only use for testing at local) and we don't want to download and build into Docker images as it is quite heavy.
    12. Run `npm run test` for running tests. Use `Control + C` to stop the tests running. Whenever you update the file and believe the tests are passed but Jest stills show failed test, try restarting the tests.
 2. In **ticketing**:
+
    1. Run `skaffold dev` to start skaffold
+
+3. In **ticketing/client/**:
+   1. Run `npm init -y`
+   2. Run `npm install react react-dom next`
 
 ### Host File Tweak
 
@@ -299,6 +304,7 @@ To explain:
 To get list of secrets: `kubectl get secrets`
 
 ### For running tests
+
 The `supertest` library helps to target a service to available port of our local machine for testing.
 
 ## Debug
