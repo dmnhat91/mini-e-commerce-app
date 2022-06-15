@@ -16,5 +16,13 @@ build:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: 'src/**/*.ts' # set of files skaffold needs to watch
+          - src: "src/**/*.ts" # set of files skaffold needs to watch
             dest: . # where to sync this file to inside of our running container
+    - image: us.gcr.io/ticketing-dev-345514/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: "**/*.js"
+            dest: .
