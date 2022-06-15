@@ -181,6 +181,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
 3. In **ticketing/client/**:
    1. Run `npm init -y`
    2. Run `npm install react react-dom next`
+   3. Set up the running script in package `"dev": "next"`, then you can run `npm run dev` to run nextJs at local (by default it will point to localhost:3000).
 
 ### Host File Tweak
 
@@ -306,6 +307,10 @@ To get list of secrets: `kubectl get secrets`
 ### For running tests
 
 The `supertest` library helps to target a service to available port of our local machine for testing.
+
+### Basics of NextJS
+
+NextJS manages files as routes. For example, if we have 2 files `index.js` and `banana.js`. It treats `index.js` as homepage (aka. `localhost`) and we can access `banana.js` using `localhost/banana`. File names map up to route names. It might take time to loadup server.
 
 ## Debug
 
