@@ -327,6 +327,12 @@ In this project, using TypeScript for NextJS is not a good idea, we will have to
 
 Can refer to the following documentation: `https://github.com/vercel/next.js/blob/canary/errors/css-global.md`
 
+### To check response when submitting
+
+You can go to Inspect > Network > XHR > Choose between Headers and Preview (assuming using Google Chrome)
+
+![Cookie inspection](images/inspect-cookie.png)
+
 ## Debug
 
 ### Error 1:
