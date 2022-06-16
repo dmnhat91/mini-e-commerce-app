@@ -403,6 +403,60 @@ scripts: {
 
 ![Resolve reload issue](images/reload-issue-solve.png)
 
+### Error 3:
+
+If you use this code for the landing page:
+
+```
+import axios from 'axios';
+
+const LandingPage = ({currentUser}) => {
+    console.log(currentUser);
+    axios.get('/api/users/currentuser');
+
+    return <h1>Landing Page</h1>;
+ };
+
+ LandingPage.getInitialProps = async () => {
+    const response = await axios.get('/api/users/currentuser');
+
+    return response.data;
+ };
+
+ export default LandingPage;
+```
+
+You get error ECONNREFUSED. This is due to the Kubernetes. What is actually happening?
+![ECONNREFUSED err explain](images/econnrefuse-explain.png)
+
+1. We make request GET ticketing.dev to browser and we already modify host file to translate it to 127.0.0.1:80 (the port is set to 80 by default as we don't specify it).
+2. The port is bound to Ingress Nginx and route off appropriately. Because there is no path specified, the Nginx decides to forward to Client.
+3. NextJS receives the request, builds up some HTML document and send back to us.
+4. We receive Fully rendered HTML file on browser.
+5. And then if we use Axios to call inside React component for request '/api/users/currentuser', it is still successful because the browser, by default, assumes the request is using the current domain 'ticketing.dev' (although we did not specify it).
+
+![ECONNREFUSED err explain 2](images/econnrefuse-explain-2.png)
+
+1. Now for the case we call request inside getInitialProps, NextJS makes request to networking layer. The networking is just some kind of stuff implemented by nodes http layer (works similar to the browser). And this networking assumes of using localhost (aka. 127.0.0.1:80) because you don't specify the domain. BUT we are running it inside a container, the localhost is the local env of the CONTAINER.
+
+How to solve this?
+We can config Axios to make request based on whether it is from NextJS server or from our local machine.
+There are 2 ways as decribed in following pic.
+![ECONNREFUSED err solution](images/econnrefuse-sol.png)
+Option 1 is better as it doesn't require us to know the service name (aka. auth-srv defined in K8s file). We just need to reach out to Ingress Nginx and let it route for us.
+There is still a challenge. How do we know exactly what domain to put there for option 1? And the request also need to include Cookie for current user.
+In the world of k8s, we can use name `auth-srv` only when we are in the same namespace.
+![k8s namespace](images/k8s-namespace.png)
+So we cannot use name like `ingress-nginx-srv` to connect to the Ingress Nginx because it is in different namespace. We need to cross namespace:
+![cross namespace](images/cross-namespace.png)
+We use syntax: `http://NAMEOFSERVICE.NAMESPACE.svc.cluster.local`
+To know the NAMESPACE, run `kubectl get namespace`
+To know the NAMEOFSERVICE, run `kubectl get services -n [namespace]` (by default, it list out `default` namespace)
+To summarise, we need to use `http://ingress-nginx.ingress-nginx.svc.cluster.local`
+
+We can also use ExternalName service to enable us to use short name:
+![external name service](images/external-name-service.png)
+
 ## Other resources
 
 1. [Cookie content decoder](https://www.base64decode.org)
