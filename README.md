@@ -318,6 +318,8 @@ The `supertest` library helps to target a service to available port of our local
 
 NextJS manages files as routes. For example, if we have 2 files `index.js` and `banana.js`. It treats `index.js` as homepage (aka. `localhost`) and we can access `banana.js` using `localhost/banana`. File names map up to route names. It might take time to loadup server.
 
+If we put `signup.js` inside a folder called `auth` then the path becomes `localhost/auth/signup` to access the page.
+
 In this project, using TypeScript for NextJS is not a good idea, we will have to write quite a lot of definitions for TypeScript. So instead we opt for JavaScript (just for NextJS only for frontend side).
 
 ### Global CSS
