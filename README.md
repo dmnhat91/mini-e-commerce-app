@@ -182,6 +182,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
    1. Run `npm init -y`
    2. Run `npm install react react-dom next`
    3. Set up the running script in package `"dev": "next"`, then you can run `npm run dev` to run nextJs at local (by default it will point to localhost:3000).
+   4. Run `npm install bootstrap`
 
 ### Host File Tweak
 
@@ -313,6 +314,10 @@ The `supertest` library helps to target a service to available port of our local
 NextJS manages files as routes. For example, if we have 2 files `index.js` and `banana.js`. It treats `index.js` as homepage (aka. `localhost`) and we can access `banana.js` using `localhost/banana`. File names map up to route names. It might take time to loadup server.
 
 In this project, using TypeScript for NextJS is not a good idea, we will have to write quite a lot of definitions for TypeScript. So instead we opt for JavaScript (just for NextJS only for frontend side).
+
+### Global CSS
+
+Can refer to the following documentation: `https://github.com/vercel/next.js/blob/canary/errors/css-global.md`
 
 ## Debug
 
