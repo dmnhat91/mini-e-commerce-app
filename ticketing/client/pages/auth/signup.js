@@ -10,17 +10,14 @@ export default () => {
         method: 'post',
         body: {
             email, password
-        }
+        },
+        onSuccess: () => Router.push('/') //navigate to index page
     });
 
     const onSubmit = async event => {
         event.preventDefault();
 
         await doRequest();
-        
-        Router.push('/'); //navigate to index page
-
-        doRequest();
     };
 
     return (
