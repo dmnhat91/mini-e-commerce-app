@@ -188,6 +188,7 @@ Errors are an aray of objects. And each has a message and maybe a field.
    2. Run `npm install react react-dom next`
    3. Set up the running script in package `"dev": "next"`, then you can run `npm run dev` to run nextJs at local (by default it will point to localhost:3000).
    4. Run `npm install bootstrap`
+   5. Run `npm install axios`
 
 ### Host File Tweak
 
