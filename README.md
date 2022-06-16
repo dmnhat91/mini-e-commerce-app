@@ -361,6 +361,10 @@ const LandingPage = ({color}) => {
  export default LandingPage;
 ```
 
+`getInitialProps` scenario:
+![getInitialProps image 1](images/getIntialProps.png)
+![getInitialProps image 2](images/getInitialProps2.png)
+
 ### Global CSS
 
 Can refer to the following documentation: `https://github.com/vercel/next.js/blob/canary/errors/css-global.md`
