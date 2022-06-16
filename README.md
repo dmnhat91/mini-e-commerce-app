@@ -333,6 +333,10 @@ You can go to Inspect > Network > XHR > Choose between Headers and Preview (assu
 
 ![Cookie inspection](images/inspect-cookie.png)
 
+### useRequest hook
+
+![useRequest hook](images/useRequestHook.png)
+
 ## Debug
 
 ### Error 1:
