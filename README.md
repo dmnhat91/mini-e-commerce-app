@@ -23,6 +23,11 @@ We build **common** library that helps share a bund of codes among services.
 ![Confirmation screen](images/Screen5.png)
 ![Payment screen](images/Screen6.png)
 
+#### Signup and signin view
+
+![Signup screen](images/signup-view.png)
+![Signin screen](images/signin-view.png)
+
 ### Database storage
 
 We need storage to store User, Ticket, Order, Charge.
