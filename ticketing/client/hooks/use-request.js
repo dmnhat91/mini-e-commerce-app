@@ -20,6 +20,7 @@ export default ({url, method, body}) => {
                 </ul>
             </div>
             );
+            throw err;
         }
     };
 
