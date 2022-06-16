@@ -344,6 +344,23 @@ export default LandingPage;
 3. Once `getInitialProps` is invoked, anything return from it is going to provided to our component as a prop.
 4. NextJS then takes HTML from all components rendered and send back full response.
 
+Code example:
+
+```
+const LandingPage = ({color}) => {
+    console.log('I am in the component', color);
+    return <h1>Landing Page</h1>;
+ };
+
+ LandingPage.getInitialProps = () => {
+    console.log('I am on the server!');
+
+    return {color: 'red'};
+ };
+
+ export default LandingPage;
+```
+
 ### Global CSS
 
 Can refer to the following documentation: `https://github.com/vercel/next.js/blob/canary/errors/css-global.md`
