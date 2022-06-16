@@ -323,6 +323,27 @@ If we put `signup.js` inside a folder called `auth` then the path becomes `local
 
 In this project, using TypeScript for NextJS is not a good idea, we will have to write quite a lot of definitions for TypeScript. So instead we opt for JavaScript (just for NextJS only for frontend side).
 
+The following diagram shows how NextJS works:
+![NextJS basics](images/nextjs-server-render.png)
+
+1. When we make a request to NextJS, it looks at incoming request and based on the URL, it decides what component to show (such as the "signup" page, or "banana" page).
+2. Then for each of those components, it call `getInitialProps` static method. This is our opportunity to attempt to fetch some data the component needs before rendering process.
+
+```
+const LandingPage = () => {
+   return <h1>Landing Page</h1>;
+};
+
+LandingPage.getInitialProps = () => {
+   // you define your code here
+};
+
+export default LandingPage;
+```
+
+3. Once `getInitialProps` is invoked, anything return from it is going to provided to our component as a prop.
+4. NextJS then takes HTML from all components rendered and send back full response.
+
 ### Global CSS
 
 Can refer to the following documentation: `https://github.com/vercel/next.js/blob/canary/errors/css-global.md`
