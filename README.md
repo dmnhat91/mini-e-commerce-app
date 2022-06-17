@@ -364,6 +364,7 @@ const LandingPage = ({color}) => {
 `getInitialProps` scenario:
 ![getInitialProps image 1](images/getIntialProps.png)
 ![getInitialProps image 2](images/getInitialProps2.png)
+![getInitialProps for AppComponent](images/multiple-getinitial-props-2.png)
 
 ### Global CSS
 

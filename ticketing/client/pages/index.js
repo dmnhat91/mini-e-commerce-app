@@ -30,7 +30,8 @@ const LandingPage = ({currentUser}) => {
 
     return {};
     ******/
-    const client = buildClient(context);
+    console.log('LANDING PAGE');
+    const client = buildClient(context); //context for this = {req, res}
     const {data} = await client.get('/api/users/currentuser').catch((err) => {
         console.log(err.message);
     });
