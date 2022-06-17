@@ -375,6 +375,9 @@ You can go to Inspect > Network > XHR > Choose between Headers and Preview (assu
 
 ![Cookie inspection](images/inspect-cookie.png)
 
+Or you can go to Inspect > Application > Select the Cookie
+![Cookie inspection 2](images/inspect-cookie-2.png)
+
 ### useRequest hook
 
 ![useRequest hook](images/useRequestHook.png)
