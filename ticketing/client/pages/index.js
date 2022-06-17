@@ -1,4 +1,5 @@
 import axios from 'axios';
+import buildClient from '../api/build-client';
 
 const LandingPage = ({currentUser}) => {
     console.log(currentUser);
@@ -6,7 +7,8 @@ const LandingPage = ({currentUser}) => {
     return <h1>Landing Page</h1>;
  };
  
- LandingPage.getInitialProps = async ({req}) => {
+ LandingPage.getInitialProps = async (context) => {
+    /***** REPLACED BY buildClient
     // console.log(req.headers);
 
     if (typeof window === 'undefined'){ 
@@ -29,6 +31,13 @@ const LandingPage = ({currentUser}) => {
     }
 
     return {};
+    ******/
+    const client = buildClient(context);
+    const {data} = await client.get('/api/users/currentuser').catch((err) => {
+        console.log(err.message);
+    });
+
+    return data;
  };
  
  export default LandingPage;
